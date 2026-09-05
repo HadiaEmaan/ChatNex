@@ -19,7 +19,7 @@ A Flask chatbot workspace with one conversation flow for GPT, Gemma, Gemini, and
 ## 📁 Project Structure
 
 ```
-multi-ai-chatbot/
+ChatNex/
 ├── src/
 │   └── com/
 │       └── example/
