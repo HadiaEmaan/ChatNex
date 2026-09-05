@@ -1,18 +1,19 @@
 # ChatNex workspace
 
-A Flask chatbot workspace with one conversation flow for GPT, Gemma, Gemini, and local Ollama models. The browser never receives provider secrets; Flask routes requests server-side and keeps conversation history available for follow-up prompts in any language.
+A production-ready Flask AI platform engineered to unify high-performance local Ollama models and top-tier cloud intelligence into a single seamless workspace with secure enterprise administration.
 
 ---
 
 ## 🌟 Key Features
 
-1. **Multi-Engine AI Selector**: Switch between GPT, Gemma, Gemini, and Ollama on the fly.
-2. **Temperature Control Slider**: Fine-tune AI response creativity from `0.0` (focused/analytical) to `1.0` (creative/unique).
-3. **Secure Flask Router**:
-   - Receives JSON requests (`model`, `temperature`, `prompt`, `history`) on `POST /api/chat`.
-   - Uses server-side environment variables for provider credentials.
-   - Returns a clear setup error when a selected cloud provider is not configured.
-4. **Sleek Modern Web UI**: Dark mode UI with glassmorphism, glowing accents, unique user and AI chat bubbles, typing indicator, quick prompt suggestions, and HTML escape security.
+1. **Multi-Engine AI Selector**: Switch between local Ollama models and cloud gateways (GPT, Gemma, Gemini) seamlessly.
+2. **Temperature Control Slider**: Fine-tune AI response creativity from `0.0` (focused/analytical) to `2.0` (creative/unique).
+3. **Secure Enterprise Architecture**:
+* Server-side routing with Flask backend handling authentication and API credentials.
+* Comprehensive admin dashboard for monitoring user accounts, access blocks, and saved chat conversations.
+
+
+4. **Interactive Community Feedback Pipeline**: Dynamic submission form and admin-synchronized feedback review interface powered by client-side persistence and a unified design system.
 
 ---
 
@@ -20,85 +21,49 @@ A Flask chatbot workspace with one conversation flow for GPT, Gemma, Gemini, and
 
 ```
 ChatNex/
-├── src/
-│   └── com/
-│       └── example/
-│           └── chatbot/
-│               ├── Main.java              # Java HTTP Server entry point
-│               ├── ChatRequest.java       # DTO for request payload
-│               ├── ChatResponse.java      # DTO for response payload
-│               ├── AIServiceRouter.java   # Router logic engine for AI APIs
-│               └── JsonUtils.java         # Lightweight JSON parser & serializer
-├── web/
-│   └── index.html                         # Modern HTML/CSS/JS chat interface
-├── pom.xml                                # Optional Maven configuration
-├── build.bat                              # Windows 1-click build script
-├── run.bat                                # Windows 1-click run script
-└── README.md                              # Documentation
+├── static/
+│   ├── css/                 # Admin, authentication, contact, and marketing stylesheets
+│   └── js/                  # App interaction, authentication, and marketing scripts
+├── templates/               # Jinja2 HTML templates (Landing, Login, Signup, Chatbot, Contact, Feedback, Admin panels)
+├── app.py                   # Main Flask server application with database orchestration
+├── chatnex.db               # SQLite database persistence layer
+├── chatnex.jpg              # Asset cover image
+├── requirements.txt         # Python project dependencies
+└── README.md                # Documentation
+
 ```
 
 ---
 
 ## 🚀 How to Run
 
-### Flask app (recommended)
+### Flask application
 
 ```cmd
 python -m pip install -r requirements.txt
-run_flask.bat
+python app.py
+
 ```
 
-Open `http://localhost:5000`.
+Open `http://localhost:5000` or log in to the admin panel using environment credentials.
 
-### Optional cloud providers
+### Configuration
 
-Set only the keys for the providers you want to use before starting Flask. Never paste keys into the browser UI or commit them to the project.
+Set up your `.env` or environment variables for server credentials and cloud APIs:
 
 ```cmd
+set FLASK_SECRET_KEY=your-secret-key
+set ADMIN_EMAIL=admin@chatnex.local
+set ADMIN_PASSWORD=Admin@123
 set OPENAI_API_KEY=sk-...
-set ANTHROPIC_API_KEY=sk-ant-...
 set GEMINI_API_KEY=AIzaSy...
-```
 
-Optional model overrides:
-
-```cmd
-set OPENAI_MODEL=gpt-4o-mini
-set GEMMA_MODEL=gemma-4-26b-a4b-it
-set GEMINI_MODEL=gemini-3.8-flash
-```
-
-Ollama remains available locally when `ollama serve` is running. Pull a model, then choose **Ollama · Local** in the selector.
-
-### Java app (legacy alternative)
-
-1. **Compile Java Files**:
-   ```cmd
-   javac -d bin -sourcepath src src/com/example/chatbot/Main.java
-   ```
-
-2. **Run Server**:
-   ```cmd
-   java -cp bin com.example.chatbot.Main
-   ```
-
-3. **Open Browser**:
-   Navigate to `http://localhost:8080` in your web browser.
-
----
-
-### Option 2: Windows 1-Click Batch Scripts
-
-- Double click `build.bat` to compile the Java project.
-- Double click `run.bat` to launch the server!
-
----
-
-### Option 3: Maven (Optional)
-
-```cmd
-mvn clean compile exec:java
 ```
 
 ---
 
+## 📄 Copyright & Licensing
+
+Copyright (c) 2026 Zain Qamar. All rights reserved.
+
+Unauthorized copying, distribution, modification, public display, or public performance of this software, or any portion of it, is strictly prohibited without prior written permission from the copyright holder.
