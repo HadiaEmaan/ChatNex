@@ -64,8 +64,8 @@ Optional model overrides:
 
 ```cmd
 set OPENAI_MODEL=gpt-4o-mini
-set ANTHROPIC_MODEL=gemma-sonnet-4-6
-set GEMINI_MODEL=gemini-2.0-flash
+set GEMMA_MODEL=gemma-4-26b-a4b-it
+set GEMINI_MODEL=gemini-3.8-flash
 ```
 
 Ollama remains available locally when `ollama serve` is running. Pull a model, then choose **Ollama · Local** in the selector.
