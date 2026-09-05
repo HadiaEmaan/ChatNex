@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatNex Pricing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketing.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}">
+            <span class="brand-mark">✦</span><span>ChatNex</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('services') }}">Services</a>
+            <a href="{{ url_for('pricing') }}">Pricing</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <a class="text-link" href="{{ url_for('login') }}">Log in</a>
+            <a class="button button-small" href="{{ url_for('signup') }}">Create Account</a>
+        </div>
+        <button class="menu-toggle" aria-label="Open navigation">☰</button>
+    </header>
+
+    <main>
+        <section class="cta-section page-section">
+            <div>
+                <span class="section-kicker">NO PRICING</span>
+                <h1>Start making every<br>conversation count.</h1>
+                <p>Try ChatNex Unlimited. No credit card and no complicated setup.</p>
+                <p style="opacity: 0.9; font-size: 1.05rem; margin-top: 12px;">Unlock limitless model routing, advanced system prompts, and round-the-clock intelligent workflows instantly.</p>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 6px;">Empower your projects with high-performance local and cloud AI assistants under a single unified workspace.</p>
+            </div>
+            <a class="button button-light" href="{{ url_for('signup') }}">Create Account <span>→</span></a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand" href="{{ url_for('index') }}">
+            <span class="brand-mark">✦</span><span>ChatNex</span>
+        </a>
+        <span>© 2026 ChatNex. Built for better conversations.</span>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/marketing.js') }}"></script>
+</body>
+</html>

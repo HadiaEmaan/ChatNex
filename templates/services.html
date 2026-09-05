@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatNex Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketing.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span><span>ChatNex</span></a>
+        <nav class="main-nav" aria-label="Main navigation"><a href="{{ url_for('index') }}">Home</a><a href="{{ url_for('about') }}">About</a><a href="{{ url_for('services') }}">Services</a><a href="{{ url_for('pricing') }}">Pricing</a><a href="{{ url_for('contact') }}">Contact</a></nav>
+        <div class="header-actions"><a class="text-link" href="{{ url_for('login') }}">Log in</a><a class="button button-small" href="{{ url_for('signup') }}">Create Account</a></div>
+    </header>
+    <main>
+        <section class="services-section page-section">
+            <div>
+                <span class="section-kicker">WHAT CHATNEX DOES</span>
+                <h1>One workspace for<br>every conversation.</h1>
+                <p>Build, test, and improve helpful AI experiences with the models you already trust.</p>
+            </div>
+            <div class="service-list">
+                <div><span>01</span><strong>Website conversations</strong><p>Meet people where they are with a fast, friendly AI assistant.</p></div>
+                <div><span>02</span><strong>Multilingual support</strong><p>Let customers ask naturally and receive answers in their own language.</p></div>
+                <div><span>03</span><strong>Multiple AI models</strong><p>Move between GPT, Gemma, Gemini, and local models in one place.</p></div>
+                <div><span>04</span><strong>Custom System Prompts</strong><p>Tailor your AI's persona, tone, and behavior to match your unique brand voice.</p></div>
+                <div><span>05</span><strong>Analytics & Insights</strong><p>Track conversation metrics, user engagement, and popular query trends in real time.</p></div>
+                <div><span>06</span><strong>Local & Cloud Sync</strong><p>Seamlessly switch between private local Ollama instances and high-performance cloud gateways.</p></div>
+                <div><span>07</span><strong>Secure & Private</strong><p>Keep your conversations and data protected with robust local execution options.</p></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span><span>ChatNex</span></a>
+        <span>© 2026 ChatNex. Built for better conversations.</span>
+    </footer>
+    <script src="{{ url_for('static', filename='js/marketing.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in | ChatNex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+    <main class="auth-layout">
+        <section class="auth-art">
+            <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark"></span> ChatNex</a>
+            <div class="art-copy">
+                <span class="section-kicker">WELCOME BACK</span>
+                <h1>Your conversations,<br><em>all in one place.</em></h1>
+                <p>Pick up where you left off and keep creating helpful experiences with your AI workspace.</p>
+            </div>
+            <div class="art-orbit">
+                <div class="mini-bot"><i></i><i></i><b></b></div>
+                <span class="art-dot dot-a"></span>
+                <span class="art-dot dot-b"></span>
+            </div>
+        </section>
+        <section class="auth-panel">
+            <div class="auth-card">
+                <a class="mobile-brand brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span> ChatNex</a>
+                <span class="section-kicker">ACCOUNT ACCESS</span>
+                <h2>Welcome back</h2>
+                <p class="auth-subtitle">Log in to continue to your chatbot workspace.</p>
+                
+                <form onsubmit="return enterChat(event)">
+                    <label for="email">Email address</label>
+                    <input id="email" type="email" placeholder="you@example.com" required>
+                    <label for="password">Password <a href="#">Forgot password?</a></label>
+                    <input id="password" type="password" placeholder="Enter your password" required>
+                    <button class="button" type="submit">Log in <span></span></button>
+                </form>
+                
+                <p class="switch-auth">Don't have an account? <a href="{{ url_for('signup') }}">Create one</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>

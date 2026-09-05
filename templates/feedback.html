@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | ChatNex Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="admin-page">
+    <header class="admin-header">
+        <a class="admin-brand" href="{{ url_for('admin_dashboard') }}"><span>✦</span> ChatNex Admin</a>
+        <nav class="admin-nav">
+            <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('admin_users') }}">Users</a>
+            <a href="{{ url_for('admin_conversations') }}">Conversations</a>
+            <a class="active" href="{{ url_for('feedback') }}">Feedback</a>
+        </nav>
+        <form method="post" action="{{ url_for('admin_logout') }}">
+            <button class="logout-button" type="submit">Log out</button>
+        </form>
+    </header>
+    
+    <main class="admin-shell">
+        <div class="admin-heading">
+            <div>
+                <span class="admin-kicker">COMMUNITY FEEDBACK</span>
+                <h1>Recent feedback</h1>
+                <p>Review messages and inquiries submitted by users through the contact form.</p>
+            </div>
+            <span class="admin-email">{{ admin_email }}</span>
+        </div>
+        
+        <section class="user-folders">
+            <div id="feedbacksList" class="feedbacks-list">
+                <!-- Dynamic feedback items will appear here -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadFeedbacks);
+
+        function loadFeedbacks() {
+            const listContainer = document.getElementById("feedbacksList");
+            let feedbacks = JSON.parse(localStorage.getItem("chatnex_feedbacks")) || [];
+
+            listContainer.innerHTML = "";
+            
+            if (feedbacks.length === 0) {
+                listContainer.innerHTML = '<p class="empty-folder" style="padding: 20px;">No feedback submitted yet.</p>';
+                return;
+            }
+
+            feedbacks.forEach(item => {
+                const article = document.createElement("article");
+                article.className = "conversation-card";
+                article.innerHTML = `
+                    <div class="conversation-heading">
+                        <strong>${escapeHtml(item.name || item.author || "User")}</strong>
+                        <small>${escapeHtml(item.date || "Recent")}</small>
+                    </div>
+                    <div class="admin-message user-message" style="margin-top: 10px;">
+                        <p>${escapeHtml(item.text || item.message || "")}</p>
+                    </div>
+                `;
+                listContainer.appendChild(article);
+            });
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>

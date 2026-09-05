@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | ChatNex</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="admin-page">
+    <header class="admin-header">
+        <a class="admin-brand" href="{{ url_for('admin_dashboard') }}"><span>✦</span> ChatNex Admin</a>
+<nav class="admin-nav">
+    <a class="active" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('admin_users') }}">Users</a>
+    <a href="{{ url_for('admin_conversations') }}">Conversations</a>
+    <a href="{{ url_for('feedback') }}">Feedback</a>
+</nav>
+        <form method="post" action="{{ url_for('admin_logout') }}"><button class="logout-button" type="submit">Log out</button></form>
+    </header>
+    <main class="admin-shell">
+        <div class="admin-heading"><div><span class="admin-kicker">USER MANAGEMENT</span><h1>Registered users</h1><p>Review account activity and manage access.</p></div><span class="admin-email">{{ admin_email }}</span></div>
+        <section class="admin-stats">
+            <div><span>Total users</span><strong>{{ user_folders|length }}</strong></div>
+            <div><span>Active</span><strong>{{ user_folders|selectattr('user.blocked', 'equalto', 0)|list|length }}</strong></div>
+            <div><span>Blocked</span><strong>{{ user_folders|selectattr('user.blocked', 'equalto', 1)|list|length }}</strong></div>
+        </section>
+        <section class="user-folders">
+            {% if user_folders %}
+            {% for folder in user_folders %}
+            <details class="user-folder">
+                <summary>
+                    <span class="folder-icon">Folder</span>
+                    <span class="folder-user"><strong>{{ folder.user.first_name }} {{ folder.user.last_name }}</strong><small>{{ folder.user.email }}</small></span>
+                    <span class="folder-count">{{ folder.conversations|length }} chats</span>
+                    <span class="status {{ 'blocked' if folder.user.blocked else 'active' }}">{{ 'Blocked' if folder.user.blocked else 'Active' }}</span>
+                    <form method="post" action="{{ url_for('toggle_user_block', user_id=folder.user.id) }}" onclick="event.stopPropagation()"><button class="action-button {{ 'unblock' if folder.user.blocked else 'block' }}" type="submit">{{ 'Unblock' if folder.user.blocked else 'Block' }}</button></form>
+                </summary>
+                <div class="folder-content">
+                    {% if folder.conversations %}
+                    {% for conversation in folder.conversations %}
+                    <article class="conversation-card">
+                        <div class="conversation-heading"><strong>{{ conversation.title }}</strong><small>{{ conversation.updated_at[:10] }}</small></div>
+                        {% for message in conversation.messages %}
+                        <div class="admin-message {{ 'user-message' if message.sender == 'user' else 'ai-message' }}">
+                            <span>{{ folder.user.first_name if message.sender == 'user' else (message.model or 'AI assistant') }}</span>
+                            <p>{{ message.text }}</p>
+                        </div>
+                        {% endfor %}
+                    </article>
+                    {% endfor %}
+                    {% else %}<p class="empty-folder">No saved conversations for this user yet.</p>{% endif %}
+                </div>
+            </details>
+            {% endfor %}
+            {% else %}<div class="empty-users">No registered users yet.</div>{% endif %}
+        </section>
+    </main>
+</body>
+</html>

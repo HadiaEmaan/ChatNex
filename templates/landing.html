@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatNex | Intelligent conversations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketing.css') }}">
+    <style>.header-actions .text-link::before,.header-actions .text-link::after{content:none!important;display:none!important}</style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span><span>ChatNex</span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="{{ url_for('index') }}">Home</a><a href="{{ url_for('about') }}">About</a><a href="{{ url_for('services') }}">Services</a>
+            <a href="{{ url_for('pricing') }}">Pricing</a><a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <div class="header-actions"><a class="text-link" href="{{ url_for('login') }}">Log in</a><a class="button button-small" href="{{ url_for('signup') }}">Create Account</a></div>
+        <button class="menu-toggle" aria-label="Open navigation">☰</button>
+    </header>
+
+    <main>
+        <section class="hero-section" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow-row"><span class="eyebrow-dot"></span><span>Unlimited Use</span><span class="divider-dot"></span><span>No credit card required</span></div>
+                <h1>Boost conversations<br>with our intelligent<br><span>Chatbot</span> platform</h1>
+                <p>Build human-like AI chatbots for websites, apps, and customer service in minutes.</p>
+                <div class="hero-actions"><a class="button" href="{{ url_for('signup') }}">Start Now</a></div>
+                <div class="trust-row"><div class="avatar-stack"><span>MK</span><span>SA</span><span>JD</span></div><div><strong>10k+</strong><small>teams building better conversations</small></div></div>
+            </div>
+            <div class="hero-visual" aria-label="Chatbot preview">
+                <div class="visual-glow"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+                <div class="bot-shadow"></div><div class="bot-head"><span class="bot-ear left"></span><span class="bot-ear right"></span><span class="bot-eye left"></span><span class="bot-eye right"></span><span class="bot-mouth"></span></div><div class="bot-body"><span class="bot-screen"></span></div>
+                <div class="chat-bubble bubble-one">Hey, how can we help you?</div><div class="chat-bubble bubble-two">Can you please help me<br>co-create the topic?</div><div class="bubble-dots">•••</div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="site-footer"><a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span><span>ChatNex</span></a><span>© 2026 ChatNex. Built for better conversations.</span></footer>
+    <script src="{{ url_for('static', filename='js/marketing.js') }}"></script>
+</body>
+</html>

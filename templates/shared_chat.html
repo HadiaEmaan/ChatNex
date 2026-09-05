@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ shared.title if shared else 'Shared Chat' }} | ChatNex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>:root{--ink:#152238;--muted:#718096;--blue:#3478f6;--line:#e1e9f3}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:#f5f8fc;color:var(--ink);font-family:'DM Sans',sans-serif}.shared-header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 max(6vw,24px);background:#fff;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:8px;color:var(--ink);font:700 18px 'Space Grotesk',sans-serif}.brand-mark{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;color:#fff;background:var(--blue)}.shared-shell{width:min(860px,calc(100% - 32px));margin:44px auto}.shared-kicker{color:var(--blue);font-size:10px;font-weight:700;letter-spacing:.16em}.shared-shell h1{margin:10px 0 6px;font:600 clamp(28px,4vw,42px) 'Space Grotesk',sans-serif;letter-spacing:-.04em}.shared-meta{color:var(--muted);font-size:13px;margin-bottom:24px}.transcript{padding:26px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 25px rgba(30,64,110,.06);white-space:pre-wrap;word-break:break-word;font:14px/1.7 'Fira Code',monospace;color:#30445f}.continue-button{display:inline-flex;margin-top:24px;padding:14px 22px;border-radius:8px;background:var(--blue);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 18px rgba(52,120,246,.2)}.continue-button:hover{background:#2563d8}.not-found{text-align:center;padding:80px 20px}.not-found p{color:var(--muted)}@media(max-width:600px){.shared-shell{margin:28px auto}.transcript{padding:18px;font-size:12px}.shared-header{height:64px}}</style>
+</head>
+<body>
+    <header class="shared-header"><a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✦</span> ChatNex</a><a href="{{ url_for('login') }}" style="color:var(--blue);font-size:13px;font-weight:700">Log in</a></header>
+    {% if shared %}
+    <main class="shared-shell"><span class="shared-kicker">SHARED CONVERSATION</span><h1>{{ shared.title }}</h1><p class="shared-meta">A ChatNex conversation shared with you</p><div class="transcript">{{ shared.transcript }}</div><a class="continue-button" href="{{ url_for('chatbot', share=token) }}">Open shared chat</a></main>
+    {% else %}<main class="shared-shell not-found"><h1>Shared chat not found</h1><p>This link may have expired or is no longer available.</p><a class="continue-button" href="{{ url_for('index') }}">Back to ChatNex</a></main>{% endif %}
+</body>
+</html>

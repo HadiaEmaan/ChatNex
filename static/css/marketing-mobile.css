@@ -1,0 +1,21 @@
+@media (max-width: 800px) {
+    .main-nav.mobile-open {
+        display: flex;
+        position: absolute;
+        top: 64px;
+        left: 14px;
+        right: 14px;
+        z-index: 10;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px;
+        background: #fff;
+        border: 1px solid #e1eaf4;
+        border-radius: 8px;
+        box-shadow: 0 15px 35px rgba(52, 120, 246, 0.12);
+    }
+
+    .main-nav.mobile-open a {
+        padding: 12px 14px;
+    }
+}
