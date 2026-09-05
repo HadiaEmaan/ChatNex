@@ -1,4 +1,4 @@
-# Neuro AI workspace
+# ChatNex workspace
 
 A Flask chatbot workspace with one conversation flow for GPT, Gemma, Gemini, and local Ollama models. The browser never receives provider secrets; Flask routes requests server-side and keeps conversation history available for follow-up prompts in any language.
 
